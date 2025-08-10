@@ -1,0 +1,24 @@
+name: PR Greeting
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run PR Greeting Bot
+        uses: ./.github/actions/pr-greeting-bot
+        with:
+          greeting-message: "Hello ${username}! Thanks for your PR. We will review it shortly."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests

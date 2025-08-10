@@ -1,0 +1,14 @@
+name: 'PR Greeting Bot'
+description: 'Posts a friendly welcome comment on new pull requests using Python'
+author: 'SilverAnon'
+
+inputs:
+  greeting-message:
+    description: 'Message to post on new PRs. Use ${username} to mention the author.'
+    required: false
+    default: |
+      Hello @${username}! Thanks for opening this PR. We will review it soon!
+
+runs:
+  using: 'python'
+  main: 'greet.py'
