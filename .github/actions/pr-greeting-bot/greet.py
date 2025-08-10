@@ -18,7 +18,7 @@ def main():
 
     pr = event['pull_request']
     pr_number = pr['number']
-    repo = event['base']['repo']['name']
+    repo = pr['base']['repo']['name']         # fixed here
     owner = event['repository']['owner']['login']
     author = pr['user']['login']
 
